@@ -1,8 +1,10 @@
+# Socket code is partially from https://www.youtube.com/watch?v=3QiPPX-KeSc
+
 import random
 import socket
 import ssl
+from time import sleep
 import commitment as c
-import primes as p
 
 HEADER = 64
 PORT = 6969
@@ -23,16 +25,39 @@ client.connect(ADDR)
 
 def send(msg):
     message = msg.encode(FORMAT)
-    msg_length = len(message)
-    send_lenght = str(msg_length).encode(FORMAT)
-    send_lenght += b' ' * (HEADER - len(send_lenght)) # padding the message to be the correct lenght
-    client.send(send_lenght)
     client.send(message)
-    print("You :", msg)
+    print("You sent:", msg)
 
+def recieve():
+    msg = client.recv(HEADER).decode(FORMAT)
+    print("You recieved:", msg)
+    return msg
 
 if __name__== "__main__":
+    print("Welcome to Bobs illegal dice ring \n")
 
-    send("hello")
-    send("hello again")
+    roll = str(random.randint(1,6))
+    print("Your roll       :", roll)
+
+    com , r = c.commit(roll)
+    print("Your commitment :", com)
+    print("Your randomness :", r, "\n")
+
+    send(com)
+
+    print()
+
+    #sleep(1)
+    b_roll = recieve()
+    print("The other party rolled:", b_roll)
+
+    send(roll)
+    send(r)
+
+    print()
+
+    result = recieve()
+
     send("DISCONNECT")
+    print("We hope you enjoyed your time at bobs illegal dice ring.")
+
