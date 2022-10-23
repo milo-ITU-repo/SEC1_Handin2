@@ -1,10 +1,18 @@
 # This is a commitment library that handles all the math behind creating and reading commitments
 
-from logging import exception
+# https://github.com/raphaelrrcoelho/commitment-scheme/blob/master/commitment.py
 
-def commit(msg, r):
-    raise Exception("not implemented")
+from hashlib import sha256
+from random import getrandbits
+
+def commit(msg):
+    r = "{0:0{1}x}".format(getrandbits(256), 64) 
+    com = hashing(msg + r)
+    return (com, r)
+
+def hashing(msg):
+    encoded_msg = msg.encode()
+    return sha256(encoded_msg).hexdigest()
 
 def verify(msg, r, com):
-
-    raise Exception("not implemented")
+    return (com == hashing(msg + r))
