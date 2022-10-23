@@ -28,6 +28,8 @@ binding property, and hiding property
 
 
 ## comments on the code
+To generate your own certificate authority you need to have `openssl` installed.
+
 It is worth noting that the library `random` only generates psudo random numbers and according to the documentation as of october 2022 the library isn't suitable for 
 
 For better performance and security, one should probably refactor the `sieve_of_atkin` method to use multi threading
