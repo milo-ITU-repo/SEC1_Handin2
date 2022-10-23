@@ -24,6 +24,9 @@ For communication to be secure we want to ensure 3 things:
 ## Commitment scheme
 Furthermore, since this is a dice rolling application, we want to ensure that one party cannot change the outcome of their roll based information recieved at a later state, and we want to ensure that another party cannot change their roll based on what they recieve. In order for this to be ensured we will use the commitment encryption scheme as well.
 
+binding property, and hiding property
+
+
 ## comments on the code
 It is worth noting that the library `random` only generates psudo random numbers and according to the documentation as of october 2022 the library isn't suitable for 
 
