@@ -1,26 +1,10 @@
-def is_prime():
+# This is a commitment library that handles all the math behind creating and reading commitments
+
+from logging import exception
+
+def commit(msg, r):
     raise Exception("not implemented")
 
-def generate_prime():
-    raise Exception("not implemented")
+def verify(msg, r, com):
 
-def create_commitment(g, p, r, a):
-    """
-    :param g: The shared base/generator
-    :param p: The shared prime
-    :param r: TODO
-    :param a: TODO 
-    :return: TODO
-    """
-    return pow(g, (x+a*r), p)
-
-def create_commitment(g, p, a):
-    """
-    :param g: The shared base/generator
-    :param p: The shared prime
-    :return: TODO
-    """
-    raise Exception("not implemented")
-
-def open_commitment(g, p, r, a, d):
     raise Exception("not implemented")
